@@ -31,7 +31,10 @@ housing = strat_train_set.copy()
 #             s = housing['population'] / 100, label = 'population', c = 'median_house_value', cmap = 'jet', colorbar = True,
 #            legend = True, sharex = False, figsize = (10, 7))
 
-#========== FINDING CORRELATION ==========#
+#= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
+#================================= FINDING CORRELATION ==================================#
+#= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
+
 corr_matrix = housing.drop('ocean_proximity', axis = 1).corr()
 #print(corr_matrix['median_house_value'].sort_values(ascending = False))
 
@@ -48,11 +51,14 @@ housing['people_per_house'] = housing['population'] / housing['households']
 corr_matrix = housing.drop('ocean_proximity', axis = 1).corr()
 #print(corr_matrix['median_house_value'].sort_values(ascending = False))
 
-#========== PREPARING THE DATA ==========#
+#= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
+#================================= PREPARING THE DATA =================================#
+#= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
+
 housing = strat_train_set.drop("median_house_value", axis = 1)
 housing_labels = strat_train_set["median_house_value".copy()]
 
-#===== STEP 1: CLEANING =====#
+#========== STEP 1: CLEANING ==========#
 imputer = SimpleImputer(strategy="median")
 
 housing_num = housing.select_dtypes(include = [np.number])
@@ -63,4 +69,6 @@ X = imputer.transform(housing_num)
 
 housing_tr = pd.DataFrame(X, columns=housing_num.columns, index = housing_num.index)
 
+#========== STEP 2: HANDLING CATEGORIAL ATTRIBUTES ==========#
 housing_cat = housing["ocean_proximity"]
+print(housing_cat.head(10))
