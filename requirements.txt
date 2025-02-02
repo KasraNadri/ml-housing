@@ -1,5 +1,7 @@
 matplotlib
 pandas
 pathlib
-tarfile
 urllib
+scikit-learn
+tarfile
+

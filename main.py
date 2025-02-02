@@ -7,7 +7,6 @@ from pandas.plotting import scatter_matrix
 from sklearn.impute import SimpleImputer
 
 
-
 #print(housing.info())
 
 #print(housing["ocean_proximity"].value_counts())
@@ -50,7 +49,6 @@ corr_matrix = housing.drop('ocean_proximity', axis = 1).corr()
 #print(corr_matrix['median_house_value'].sort_values(ascending = False))
 
 #========== PREPARING THE DATA ==========#
-
 housing = strat_train_set.drop("median_house_value", axis = 1)
 housing_labels = strat_train_set["median_house_value".copy()]
 
@@ -64,3 +62,5 @@ imputer.fit(housing_num)
 X = imputer.transform(housing_num)
 
 housing_tr = pd.DataFrame(X, columns=housing_num.columns, index = housing_num.index)
+
+housing_cat = housing["ocean_proximity"]
