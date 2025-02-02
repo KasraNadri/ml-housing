@@ -56,7 +56,7 @@ corr_matrix = housing.drop('ocean_proximity', axis = 1).corr()
 #= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
 
 housing = strat_train_set.drop("median_house_value", axis = 1)
-housing_labels = strat_train_set["median_house_value".copy()]
+housing_labels = strat_train_set["median_house_value"].copy()
 
 #========== STEP 1: CLEANING ==========#
 imputer = SimpleImputer(strategy="median")
